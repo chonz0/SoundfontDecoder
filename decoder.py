@@ -244,7 +244,7 @@ def main(argv):
 # @param global_bag_index the index of the insrument global bag if it exists otherwise value is None
 # @param user_title a user selected filename for the samples output file
 # @param user_dir the output directory for the decoded samples
-def decode_selected(path, inst_index, selected_bags, global_bag_index, user_dir,
+def decode_selected(path, inst_index, selected_bags, global_bag_index, user_dir="./",
                     user_title=None):
     with open(path, 'rb') as file:
         sf2 = Sf2File(file)
@@ -267,7 +267,7 @@ def decode_selected(path, inst_index, selected_bags, global_bag_index, user_dir,
         file_title = user_title if user_title else sf2.instruments[inst_index].name
         file_title = re.sub(r'[\W]+', '', file_title)
         
-        export_samples(bags_to_decode, global_bag, len(bags_to_decode), user_dir,
+        export_samples(bags_to_decode, global_bag, len(bags_to_decode), "./",
                        file_title=file_title)
 
         return True
